@@ -60,7 +60,7 @@ jobs:
         max-score: 1
 
     - name: CVectors
-      id: cvector
+      id: cvectors
       uses: classroom-resources/autograding-command-grader@v1
       with:
         test-name: CVectors
@@ -75,7 +75,7 @@ jobs:
         CARRAY_RESULTS: "${{steps.carray.outputs.result}}"
         CLISTS_RESULTS: "${{steps.clists.outputs.result}}"
         CMAPSPAIRS_RESULTS: "${{steps.cmapspairs.outputs.result}}"
-        CSET_RESULTS: "${{steps.craii.cset.result}}"
+        CSET_RESULTS: "${{steps.cset.outputs.result}}"
         CSTRING_RESULTS: "${{steps.cstring.outputs.result}}"
         CVECTORS_RESULTS: "${{steps.cvectors.outputs.result}}"
       with:
