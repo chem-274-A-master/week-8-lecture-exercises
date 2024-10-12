@@ -1,4 +1,4 @@
-#include <iostream>
+#include <cassert>
 
 /* Below is an opinionated list of best programming languages stored as an std::list
 
@@ -25,9 +25,12 @@ int main() {
 
 
   /* Testing code below. Do not modify! */
-  for(const auto & it : best_languages)
-  {
-    std::cout << it << std::endl;
-  }
-  
+  assert(best_languages.size() == 5);
+  auto it = best_languages.begin();
+  assert(*it == "C++");  std::advance(it, 1);
+  assert(*it == "Python");  std::advance(it, 1);
+  assert(*it == "Fortran"); std::advance(it, 1);
+  assert(*it == "Julia"); std::advance(it, 1);
+  assert(*it == "JavaScript"); std::advance(it, 1);
+  assert(it == best_languages.end());
 }

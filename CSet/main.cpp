@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <set>
 
 /* Using a set, find the unique values of a vector
  *

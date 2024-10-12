@@ -1,5 +1,4 @@
-#include <iostream>
-
+#include <cassert>
 
 int main() {
   /* Create a vector of factorial numbers (called 'factorial') such that factorial[i] = i!
@@ -10,10 +9,12 @@ int main() {
   */
 
 
-
-
   // Testing code below. Do not modify!
-  std::cout << factorial.size() << std::endl;
-  std::cout << factorial[8] << std::endl;
-  std::cout << factorial[12] << std::endl;
+
+  assert(factorial.size() == 13);
+  assert(factorial[0] == 1);
+  assert(factorial[1] == 1);
+  assert(factorial[2] == 2);
+  assert(factorial[6] == 720);
+  assert(factorial[12] == 479001600);
 }
