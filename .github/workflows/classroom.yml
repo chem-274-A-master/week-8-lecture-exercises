@@ -1,0 +1,82 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: CArray
+      id: carray
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: CArray
+        command: cd CArray && bash run_test.sh
+        timeout: 20
+        max-score: 1
+
+    - name: CLists
+      id: clists
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: CLists
+        command: cd CLists && bash run_test.sh
+        timeout: 20
+        max-score: 1
+
+    - name: CMapsPairs
+      id: cmapspairs
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: CMapsPairs
+        command: cd CMapsPairs && bash run_test.sh
+        timeout: 20
+        max-score: 1
+
+    - name: CSet
+      id: cset
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: CSet
+        command: cd CSet && bash run_test.sh
+        timeout: 20
+        max-score: 1
+
+    - name: CString
+      id: cstring
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: CString
+        command: cd CString && bash run_test.sh
+        timeout: 20
+        max-score: 1
+
+    - name: CVectors
+      id: cvector
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: CVectors
+        command: cd CVectors && bash run_test.sh
+        timeout: 20
+        max-score: 1
+
+
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        CARRAY_RESULTS: "${{steps.carray.outputs.result}}"
+        CLISTS_RESULTS: "${{steps.clists.outputs.result}}"
+        CMAPSPAIRS_RESULTS: "${{steps.cmapspairs.outputs.result}}"
+        CSET_RESULTS: "${{steps.craii.cset.result}}"
+        CSTRING_RESULTS: "${{steps.cstring.outputs.result}}"
+        CVECTORS_RESULTS: "${{steps.cvectors.outputs.result}}"
+      with:
+        runners: carray,clists,cmapspairs,cset,cstring,cvectors
